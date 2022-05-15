@@ -1,0 +1,23 @@
+.response-container {
+  margin: 20px 0;
+  padding: 20px;
+  background-color: rgb(238, 238, 238);
+  border-radius: 5px;
+}
+.response-innerContainers {
+  display: flex;
+  height: 100%;
+}
+.response-prompt-header {
+  width: 25%;
+  font-size: 18px;
+  margin: 0;
+  margin-bottom: 20px;
+}
+.response-prompt-text {
+  width: 80%;
+  font-weight: 600;
+  font-size: 16px;
+  margin: 0;
+  word-wrap: break-word;
+}
