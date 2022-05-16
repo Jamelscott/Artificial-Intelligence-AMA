@@ -85,7 +85,12 @@ function Form({ setLoading, getData, payload, setPayload }) {
           onChange={(e) => setEngine(e.target.value)}
           required
         >
-          <option hidden style="display: none" className="option" value="">
+          <option
+            hidden
+            style={{ display: 'none' }}
+            className="option"
+            value=""
+          >
             Choose your conversing robo-partner   
           </option>
           <option className="option" value="text-davinci-002">
