@@ -90,6 +90,7 @@ function Form({ setLoading, getData, payload, setPayload }) {
         <h2 style={{ textAlign: "center" }} className="prompt-header">
           Artificial Intelligence AMA
         </h2>
+        <label hidden>type your question to the engine AI here</label>
         <textarea
           required
           className="prompt-textarea"
@@ -98,6 +99,7 @@ function Form({ setLoading, getData, payload, setPayload }) {
           onChange={(e) => handleTextareaChange(e)}
         />
         <div className="button-container">
+          <label hidden>choose which AI bit you would like to query</label>
           <select
             className="dropdown"
             onChange={(e) => setEngine(e.target.value)}
