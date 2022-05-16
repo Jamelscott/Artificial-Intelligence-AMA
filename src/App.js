@@ -1,6 +1,5 @@
 import './App.css';
 import Form from './Form/Form';
-import Header from './Header/Header';
 import Responses from './Responses/Responses';
 import { useState, useEffect } from 'react';
 import Footer from './Footer/Footer';
@@ -35,7 +34,6 @@ function App() {
       />
       <Responses responses={responses} />
       <Footer />
-      {/* <Header /> */}
     </>
   );
 }

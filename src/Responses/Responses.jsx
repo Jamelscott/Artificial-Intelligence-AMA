@@ -15,7 +15,6 @@ function Responses({ responses }) {
   return (
     <div className="responses-container">
       <hr className="divider"></hr>
-      {/* <h2>Responses</h2> */}
       {responses.length < 1 ? (
         <h4 style={{ textAlign: 'center' }}>
           Go ahead and ask them something. They won't bite.. I don't think..
