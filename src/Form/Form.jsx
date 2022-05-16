@@ -99,7 +99,7 @@ function Form({ setLoading, getData, payload, setPayload }) {
           onChange={(e) => handleTextareaChange(e)}
         />
         <div className="button-container">
-          <label hidden>choose which AI bit you would like to query</label>
+          <label for="choose which AI bit you would like to query"></label>
           <select
             className="dropdown"
             onChange={(e) => setEngine(e.target.value)}
