@@ -1,6 +1,5 @@
 import './responses.css';
 import Response from '../Response/Response';
-import Test from '../Loading/Test';
 import Loading from '../Loading/Loading';
 function Responses({ loading, setLoading, responses }) {
   const allResponses = responses.map((elem, idx) => {
