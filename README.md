@@ -6,5 +6,5 @@ This project was completed over a weekend to make API calls to OpenAI and fetch 
 * React (frontend)
 * Supabase (backend
 
-## Finihed Product
+## Finished Product
 ![deploy-screenshot](/public/screencap.PNG)
