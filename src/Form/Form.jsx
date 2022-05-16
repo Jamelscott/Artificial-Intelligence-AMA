@@ -1,14 +1,7 @@
 import { supabase } from '../Utility/supabseClient';
 import { useState } from 'react';
 import './form.css';
-function Form({
-  setLoading,
-  getData,
-  payload,
-  setPayload,
-  setResponses,
-  responses,
-}) {
+function Form({ setLoading, getData, payload, setPayload }) {
   const [engine, setEngine] = useState('');
 
   const postData = async (newData, engine_name) => {
@@ -92,7 +85,7 @@ function Form({
           onChange={(e) => setEngine(e.target.value)}
           required
         >
-          <option hidden className="option" value="">
+          <option hidden style="display: none" className="option" value="">
             Choose your conversing robo-partner   
           </option>
           <option className="option" value="text-davinci-002">
