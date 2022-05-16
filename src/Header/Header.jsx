@@ -1,10 +1,32 @@
-import './header.css';
+import "./header.css";
+import { motion } from "framer-motion";
 function Header() {
+  const headerVariants = {
+    start: {
+      opacity: 0,
+      y: 40,
+      ease: "easOut",
+    },
+    end: {
+      opacity: 1,
+      y: 0,
+      ease: "easOut",
+      transition: {
+        duration: 2,
+      },
+    },
+  };
+
   return (
-    <div className="footer-container">
+    <motion.div
+      initial="start"
+      animate="end"
+      variants={headerVariants}
+      className="footer-container"
+    >
       <div className="footer-div">
         <h4 className="name">Jamel Ahmed Scott Fadel</h4>
-        <h4 style={{ color: 'rgba(255, 255, 255, 0.171)' }}>|</h4>
+        <h4 style={{ color: "rgba(255, 255, 255, 0.171)" }}>|</h4>
 
         <a
           rel="noreferrer"
@@ -42,7 +64,7 @@ function Header() {
       <div className="hr-div">
         <hr className="hr"></hr>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
