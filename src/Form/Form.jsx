@@ -112,16 +112,16 @@ function Form({ setLoading, getData, payload, setPayload }) {
               Choose your conversing robo-partner   
             </option>
             <option className="option" value="text-davinci-002">
-              Dr. DaVinci
+              Dr. DaVinci - the decipherer
             </option>
             <option className="option" value="text-curie-001">
-              Admiral Curie
+              Admiral Curie - the capable
             </option>
             <option className="option" value="text-babbage-001">
-              Major Babbage
+              Major Babbage - the economical
             </option>
             <option className="option" value="text-ada-001">
-              Professor Ada
+              Professor Ada - the punctual
             </option>
           </select>
           <input className="prompt-button" type="submit" value="Submit" />
