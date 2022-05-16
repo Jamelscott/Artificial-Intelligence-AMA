@@ -1,6 +1,8 @@
 import './responses.css';
 import Response from '../Response/Response';
-function Responses({ responses }) {
+import Test from '../Loading/Test';
+import Loading from '../Loading/Loading';
+function Responses({ loading, setLoading, responses }) {
   const allResponses = responses.map((elem, idx) => {
     return (
       <Response
@@ -15,6 +17,13 @@ function Responses({ responses }) {
   return (
     <div className="responses-container">
       <hr className="divider"></hr>
+      {loading ? (
+        <>
+          <Loading />
+        </>
+      ) : (
+        <></>
+      )}
       {responses.length < 1 ? (
         <h4 style={{ textAlign: 'center' }}>
           Go ahead and ask them something. They won't bite.. I don't think..

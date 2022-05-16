@@ -1,7 +1,14 @@
 import { supabase } from '../Utility/supabseClient';
 import { useState } from 'react';
 import './form.css';
-function Form({ getData, payload, setPayload, setResponses, responses }) {
+function Form({
+  setLoading,
+  getData,
+  payload,
+  setPayload,
+  setResponses,
+  responses,
+}) {
   const [engine, setEngine] = useState('');
 
   const postData = async (newData, engine_name) => {
@@ -23,6 +30,7 @@ function Form({ getData, payload, setPayload, setResponses, responses }) {
   };
 
   const handleSubmit = (e) => {
+    setLoading(true);
     e.preventDefault();
     let engineName = '';
 

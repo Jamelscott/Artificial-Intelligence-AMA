@@ -6,6 +6,7 @@ import Header from './Header/Header';
 import { supabase } from './Utility/supabseClient';
 function App() {
   const [responses, setResponses] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const [payload, setPayload] = useState({
     prompt: '',
@@ -17,6 +18,7 @@ function App() {
   }, []);
   const getData = async () => {
     const { data, error } = await supabase.from('Responses').select();
+    setLoading(false);
     setResponses(data.reverse());
     if (error) {
       console.log(error);
@@ -27,13 +29,18 @@ function App() {
     <>
       <Header />
       <Form
+        setLoading={setLoading}
         payload={payload}
         setPayload={setPayload}
         setResponses={setResponses}
         responses={responses}
         getData={getData}
       />
-      <Responses responses={responses} />
+      <Responses
+        loading={loading}
+        setLoading={setLoading}
+        responses={responses}
+      />
     </>
   );
 }
