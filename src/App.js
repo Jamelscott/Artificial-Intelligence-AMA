@@ -1,42 +1,42 @@
 import './App.css';
-import Prompt from './Prompt/Prompt';
+import Form from './Form/Form';
 import Header from './Header/Header';
 import Responses from './Responses/Responses';
-import { useState } from 'react';
-
-import { PromptContext } from './UserContext';
+import { useState, useEffect } from 'react';
+import Footer from './Footer/Footer';
+import { supabase } from './Utility/supabseClient';
 function App() {
-  const [prompt, setPrompt] = useState('');
+  const [responses, setResponses] = useState([]);
 
-  const data = {
-    prompt: 'Write a poem about a dog wearing skis',
+  const [payload, setPayload] = useState({
+    prompt: '',
     temperature: 0.5,
     max_tokens: 64,
-  };
-
-  const handleSubmit = () => {
-    fetch('https://api.openai.com/v1/engines/text-curie-001/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`,
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((json) => {
-        console.log(json.choices[0].text);
-      });
+  });
+  useEffect(() => {
+    getData();
+  }, []);
+  const getData = async () => {
+    const { data, error } = await supabase.from('Responses').select();
+    setResponses(data.reverse());
+    if (error) {
+      console.log(error);
+    }
   };
 
   return (
-    <PromptContext.Provider value={'helllo from context'}>
-      <Header />
-      <Prompt />
-      <Responses />
-    </PromptContext.Provider>
+    <>
+      <Form
+        payload={payload}
+        setPayload={setPayload}
+        setResponses={setResponses}
+        responses={responses}
+        getData={getData}
+      />
+      <Responses responses={responses} />
+      <Footer />
+      {/* <Header /> */}
+    </>
   );
 }
 

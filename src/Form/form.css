@@ -1,0 +1,86 @@
+.prompt-container {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: var(--margin);
+  max-width: 600px;
+  margin: var(--container-margin);
+  padding: var(--container-padding);
+}
+
+.prompt-textarea {
+  color: white;
+  height: 20vh;
+  border: 2px solid lightgrey;
+  border-radius: 5px;
+  box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.1);
+  padding: 12px;
+  background-color: rgba(255, 255, 255, 0.151);
+  resize: none;
+  margin-bottom: 15px;
+  font-size: 24px;
+  cursor: text;
+}
+
+.prompt-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.295);
+  font-style: italic;
+}
+.prompt-header {
+  margin-bottom: 20px;
+}
+.prompt-button {
+  cursor: pointer;
+  border-radius: 20px;
+  box-shadow: 0 6px #30458a;
+  border: none;
+  background-color: #455dad;
+  color: white;
+  font-size: 18px;
+  width: 150px;
+  height: 50px;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+.prompt-button:hover {
+  box-shadow: 0 4px #30458a;
+  transform: translateY(2px);
+}
+.prompt-button:active {
+  box-shadow: 0 0px #30458a;
+  transform: translateY(6px);
+}
+.button-container {
+  display: flex;
+  justify-content: space-between;
+}
+.dropdown {
+  cursor: pointer;
+  font-size: 18px;
+  margin-top: 10px;
+  color: white;
+  border: 2px solid lightgrey;
+  background-color: rgba(255, 255, 255, 0.151);
+  box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding-left: 10px;
+}
+
+.option {
+  background-color: rgb(139, 139, 139);
+  cursor: pointer;
+  /* background-color: black; */
+}
+
+@media only screen and (max-width: 700px) {
+  .button-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .dropdown {
+    height: 50px;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}

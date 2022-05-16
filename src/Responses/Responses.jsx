@@ -1,38 +1,29 @@
 import './responses.css';
 import Response from '../Response/Response';
-function Responses() {
-  const test = [
-    {
-      prompt: 'Excepteur sint occaecat cupidatat non proident',
-      response:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    },
-    {
-      prompt: 'Excepteur sint occaecat cupidatat non proident',
-      response:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    },
-    {
-      prompt: 'Excepteur sint occaecat cupidatat non proident',
-      response:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    },
-  ];
-
-  const responses = test.map((elem, idx) => {
+function Responses({ responses }) {
+  const allResponses = responses.map((elem, idx) => {
     return (
       <Response
         key={`response-${idx}`}
         prompt={elem.prompt}
         response={elem.response}
+        engine_name={elem.engine_name}
       />
     );
   });
 
   return (
     <div className="responses-container">
-      <h2>Responses</h2>
-      {responses}
+      <hr className="divider"></hr>
+      {/* <h2>Responses</h2> */}
+      {responses.length < 1 ? (
+        <h4 style={{ textAlign: 'center' }}>
+          Go ahead and ask them something. They won't bite.. I don't think..
+        </h4>
+      ) : (
+        allResponses
+      )}
+      <hr className="divider"></hr>
     </div>
   );
 }
