@@ -3,23 +3,23 @@ import Response from "../Response/Response";
 import Loading from "../Loading/Loading";
 import { motion } from "framer-motion";
 function Responses({ loading, setLoading, responses }) {
+  const responsesVariants = {
+    visible: {
+      opacity: 0,
+      scale: 0.1,
+      transition: {
+        duration: 2,
+      },
+    },
+    hidden: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 2,
+      },
+    },
+  };
   const allResponses = responses.map((elem, idx) => {
-    const responsesVariants = {
-      visible: {
-        opacity: 0,
-        scale: 0.1,
-        transition: {
-          duration: 2,
-        },
-      },
-      hidden: {
-        opacity: 1,
-        scale: 1,
-        transition: {
-          duration: 2,
-        },
-      },
-    };
     return (
       <motion.div
         initial="visible"
@@ -47,9 +47,15 @@ function Responses({ loading, setLoading, responses }) {
         <></>
       )}
       {responses.length < 1 ? (
-        <h4 style={{ textAlign: "center" }}>
-          Go ahead and ask them something. They won't bite.. I don't think..
-        </h4>
+        <motion.div
+          initial="visible"
+          animate="hidden"
+          variants={responsesVariants}
+        >
+          <h4 style={{ textAlign: "center" }}>
+            Go ahead and ask them something. They won't bite.. I don't think..
+          </h4>
+        </motion.div>
       ) : (
         allResponses
       )}
