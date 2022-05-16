@@ -2,7 +2,7 @@ import './App.css';
 import Form from './Form/Form';
 import Responses from './Responses/Responses';
 import { useState, useEffect } from 'react';
-import Footer from './Footer/Footer';
+import Header from './Header/Header';
 import { supabase } from './Utility/supabseClient';
 function App() {
   const [responses, setResponses] = useState([]);
@@ -25,6 +25,7 @@ function App() {
 
   return (
     <>
+      <Header />
       <Form
         payload={payload}
         setPayload={setPayload}
@@ -33,7 +34,6 @@ function App() {
         getData={getData}
       />
       <Responses responses={responses} />
-      <Footer />
     </>
   );
 }
