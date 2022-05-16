@@ -1,12 +1,7 @@
 import './response.css';
-import { useContext } from 'react';
-import { PromptContext } from '../UserContext';
 function Response({ prompt, response, engine_name }) {
-  const msg = useContext(PromptContext);
-
   const str = engine_name;
   str.split('');
-  console.log(str);
   return (
     <div className="response-container full">
       {/* {msg} */}

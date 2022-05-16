@@ -1,4 +1,3 @@
-import Responses from '../Responses/Responses';
 import { supabase } from '../Utility/supabseClient';
 import { useState } from 'react';
 import './form.css';
@@ -8,7 +7,6 @@ function Form({ getData, payload, setPayload, setResponses, responses }) {
   const postData = async (newData, engine_name) => {
     let promisedData = await newData;
     let refinedData = promisedData.choices[0].text;
-    let engineName = '';
 
     const { data, error } = await supabase.from('Responses').insert([
       {
@@ -17,6 +15,7 @@ function Form({ getData, payload, setPayload, setResponses, responses }) {
         engine_name: engine_name,
       },
     ]);
+    console.log(data);
     getData();
     if (error) {
       console.log(error);
