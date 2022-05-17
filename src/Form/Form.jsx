@@ -1,15 +1,15 @@
-import { supabase } from "../Utility/supabseClient";
-import { useState } from "react";
-import { motion } from "framer-motion";
-import "./form.css";
+import { supabase } from '../Utility/supabseClient';
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import './form.css';
 function Form({ setLoading, getData, payload, setPayload }) {
-  const [engine, setEngine] = useState("");
+  const [engine, setEngine] = useState('');
 
   const postData = async (newData, engine_name) => {
     let promisedData = await newData;
     let refinedData = promisedData.choices[0].text;
 
-    const { data, error } = await supabase.from("Responses").insert([
+    const { data, error } = await supabase.from('Responses').insert([
       {
         prompt: payload.prompt,
         response: refinedData,
@@ -26,30 +26,30 @@ function Form({ setLoading, getData, payload, setPayload }) {
   const handleSubmit = (e) => {
     setLoading(true);
     e.preventDefault();
-    let engineName = "";
+    let engineName = '';
 
     console.log(engine);
     switch (engine) {
-      case "text-davinci-002":
-        engineName = "Dr. DaVinci";
+      case 'text-davinci-002':
+        engineName = 'Dr. DaVinci';
         break;
-      case "text-curie-001":
-        engineName = "Admiral Currie";
+      case 'text-curie-001':
+        engineName = 'Admiral Currie';
         break;
-      case "text-babbage-001":
-        engineName = "Major Babbage";
+      case 'text-babbage-001':
+        engineName = 'Major Babbage';
         break;
-      case "text-ada-001":
-        engineName = "Professor Ada";
+      case 'text-ada-001':
+        engineName = 'Professor Ada';
         break;
       default:
-        engineName = "Reponse";
+        engineName = 'Reponse';
     }
 
     fetch(`https://api.openai.com/v1/engines/${engine}/completions`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`,
       },
       body: JSON.stringify(payload),
@@ -57,7 +57,7 @@ function Form({ setLoading, getData, payload, setPayload }) {
       let newData = res.json();
       postData(newData, engineName);
       setPayload({
-        prompt: "",
+        prompt: '',
         temperature: 0.5,
         max_tokens: 64,
       });
@@ -87,7 +87,7 @@ function Form({ setLoading, getData, payload, setPayload }) {
   return (
     <motion.div initial="visible" animate="hidden" variants={formVariants}>
       <form className="prompt-container" onSubmit={handleSubmit}>
-        <h2 style={{ textAlign: "center" }} className="prompt-header">
+        <h2 style={{ textAlign: 'center' }} className="prompt-header">
           Artificial Intelligence AMA
         </h2>
         <label hidden>type your question to the engine AI here</label>
@@ -95,11 +95,14 @@ function Form({ setLoading, getData, payload, setPayload }) {
           required
           className="prompt-textarea"
           value={payload.prompt}
-          placeholder={"type your question here.."}
+          placeholder={'type your question here..'}
           onChange={(e) => handleTextareaChange(e)}
         />
         <div className="button-container">
-          <label for="choose which AI bit you would like to query"></label>
+          <label
+            hidden
+            for="choose which AI bit you would like to query"
+          ></label>
           <select
             className="dropdown"
             onChange={(e) => setEngine(e.target.value)}
@@ -107,7 +110,7 @@ function Form({ setLoading, getData, payload, setPayload }) {
           >
             <option
               hidden
-              style={{ display: "none" }}
+              style={{ display: 'none' }}
               className="option"
               value=""
             >
